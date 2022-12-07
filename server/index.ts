@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
+import { Database } from "./database";
+const database = new Database();
+
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({
@@ -14,7 +17,11 @@ app.get("/", (req: any, res: any) => {
 });
 
 app.post("/", (req: any, res: any) => {
-    console.log(req.body);
+    const userID = req.body["userID"];
+    database.resister(userID);
+    database.collectStamp(userID, "test1");
+    database.collectStamp(userID, "test2");
+    console.log(database.getStampCount(userID));
     res.sendStatus(200);
 });
 

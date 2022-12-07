@@ -19,7 +19,7 @@ export default function TabOneScreen({
       .then((ip) => setUserID(SHA1(ip).toString()))
       .then(() =>
         axios
-          .post("http://localhost:3000/", JSON.stringify({ userID }))
+          .post("http://localhost:3000/", { userID })
           .then((res) => console.log(res.status))
           .catch((err) => console.error(err))
       );

@@ -28,10 +28,16 @@
     isCompleted: 引数なし, スタンプラリーをコンプリートしたか否かの判定
 */
 
-const data = {
-    "uuid": {
-        "hash": false,
-    }
+// const data = {
+//     "uuid": {
+//         "hash": false,
+//     }
+// }
+
+const DEFAULT_TABLE = {
+    "test1": false,
+    "test2": false,
+    "test3": false,
 }
 
 interface StampRallyData {
@@ -40,9 +46,29 @@ interface StampRallyData {
     }
 }
 
-class Database {
+export class Database {
     data: StampRallyData;
     constructor(data?: StampRallyData) {
         this.data = data || {};
+    }
+
+    resister(userID: string) {
+        this.data[userID] = DEFAULT_TABLE;
+        console.log(this.data[userID]);
+    }
+
+    collectStamp(userID: string, projectHash: string) {
+        this.data[userID][projectHash] = true;
+    }
+
+    getStampCount(userID: string) {
+        const stampTable = this.data[userID];
+        let count = 0;
+        for (const property in stampTable) {
+            if (stampTable[property]) {
+                count++;
+            }
+        }
+        return count;
     }
 }
