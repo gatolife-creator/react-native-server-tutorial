@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 import { Database } from "./database";
-const database = new Database();
+const database = new Database(8);
 
 const port = process.env.PORT || 3000;
 

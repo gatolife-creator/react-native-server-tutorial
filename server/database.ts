@@ -47,22 +47,24 @@ interface StampRallyData {
 }
 
 export class Database {
-    data: StampRallyData;
-    constructor(data?: StampRallyData) {
-        this.data = data || {};
+    #data: StampRallyData;
+    #targetValue: number;
+    constructor(targetValue: number, data?: StampRallyData) {
+        this.#data = data || {};
+        this.#targetValue = targetValue;
     }
 
     resister(userID: string) {
-        this.data[userID] = DEFAULT_TABLE;
-        console.log(this.data[userID]);
+        this.#data[userID] = DEFAULT_TABLE;
+        console.log(this.#data[userID]);
     }
 
     collectStamp(userID: string, projectHash: string) {
-        this.data[userID][projectHash] = true;
+        this.#data[userID][projectHash] = true;
     }
 
     getStampCount(userID: string) {
-        const stampTable = this.data[userID];
+        const stampTable = this.#data[userID];
         let count = 0;
         for (const property in stampTable) {
             if (stampTable[property]) {
@@ -70,5 +72,13 @@ export class Database {
             }
         }
         return count;
+    }
+
+    getData() {
+        return this.#data;
+    }
+
+    isCompleted(userID: string) {
+        return this.#targetValue <= this.getStampCount(userID);
     }
 }
