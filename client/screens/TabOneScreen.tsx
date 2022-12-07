@@ -1,25 +1,35 @@
 import { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
+import publicIP from "react-native-public-ip";
+import { SHA1 } from "crypto-js";
 
 import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
+import axios from "axios";
 
 export default function TabOneScreen({
   navigation,
 }: RootTabScreenProps<"TabOne">) {
-  const [data, setData] = useState<string>("");
+  const [data, setData] = useState("");
+  const [userID, setUserID] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/")
-      .then((res) => res.json())
-      .then((data) => setData(data.id));
+    publicIP()
+      .then((ip) => setUserID(SHA1(ip).toString()))
+      .then(() =>
+        axios
+          .post("http://localhost:3000/", JSON.stringify({ userID }))
+          .then((res) => console.log(res.status))
+          .catch((err) => console.error(err))
+      );
   }, []);
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
-      <Text>id: {data}</Text>
+      <Text>id: {userID}</Text>
+      <Text>data: {data}</Text>
       <View
         style={styles.separator}
         lightColor="#eee"

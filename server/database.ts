@@ -28,4 +28,21 @@
     isCompleted: 引数なし, スタンプラリーをコンプリートしたか否かの判定
 */
 
-// export const database = []
+const data = {
+    "uuid": {
+        "hash": false,
+    }
+}
+
+interface StampRallyData {
+    [index: string]: {
+        [index: string]: boolean;
+    }
+}
+
+class Database {
+    data: StampRallyData;
+    constructor(data?: StampRallyData) {
+        this.data = data || {};
+    }
+}
