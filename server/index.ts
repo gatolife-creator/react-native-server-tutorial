@@ -7,6 +7,10 @@ app.get("/", (req: any, res: any) => {
     res.json({ id: Date.now() })
 });
 
+// app.post("/", (req: any, res: any) => {
+
+// });
+
 app.listen(port, () => {
     console.log(`server is working on port ${port}`);
 });
