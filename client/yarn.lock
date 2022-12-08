@@ -3812,6 +3812,13 @@
     "path-browserify" "^1.0.0"
     "url-parse" "^1.5.9"
 
+"expo-barcode-scanner@^12.1.0":
+  "integrity" "sha512-R+SlrtS7zEomY48Vjc+XJVHp+qz/u4TKG3CQeFobtQlBXPJvK94055yUg9PxOAwIIrOp3093FSOZiu/OGuoxiA=="
+  "resolved" "https://registry.npmjs.org/expo-barcode-scanner/-/expo-barcode-scanner-12.1.0.tgz"
+  "version" "12.1.0"
+  dependencies:
+    "expo-image-loader" "~4.0.0"
+
 "expo-constants@~14.0.0", "expo-constants@~14.0.2":
   "integrity" "sha512-wzV3nrzTXTI8yG0tfas3fnqCfKV6YE+1GphEREyVDAShEB6mBInX1b6HgtpHFy2wOtnml+lPVmTCeGtjjLnZhA=="
   "resolved" "https://registry.npmjs.org/expo-constants/-/expo-constants-14.0.2.tgz"
@@ -3838,6 +3845,11 @@
   "version" "11.0.1"
   dependencies:
     "fontfaceobserver" "^2.1.0"
+
+"expo-image-loader@~4.0.0":
+  "integrity" "sha512-hVMhXagsO1cSng5s70IEjuJAuHy2hX/inu5MM3T0ecJMf7L/7detKf22molQBRymerbk6Tzu+20h11eU0n/3jQ=="
+  "resolved" "https://registry.npmjs.org/expo-image-loader/-/expo-image-loader-4.0.0.tgz"
+  "version" "4.0.0"
 
 "expo-keep-awake@~11.0.1":
   "integrity" "sha512-44ZjgLE4lnce2d40Pv8xsjMVc6R5GvgHOwZfkLYtGmgYG9TYrEJeEj5UfSeweXPL3pBFhXKfFU8xpGYMaHdP0A=="

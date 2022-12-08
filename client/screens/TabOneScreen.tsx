@@ -7,10 +7,11 @@ import {
 import { Input, Button } from "@rneui/base";
 import publicIP from "react-native-public-ip";
 import { SHA1 } from "crypto-js";
+import axios from "axios";
 
 import { Text, View } from "../components/Themed";
+import { Scanner } from "./Scanner";
 import { RootTabScreenProps } from "../types";
-import axios from "axios";
 
 export default function TabOneScreen({
   navigation,
@@ -50,7 +51,7 @@ export default function TabOneScreen({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      {/* <Text style={styles.title}>Tab One</Text>
       <Text>id: {userID}</Text>
       <View
         style={styles.separator}
@@ -64,7 +65,8 @@ export default function TabOneScreen({
       />
       <Button onPress={() => onPress()} style={{ width: 100 }}>
         確認
-      </Button>
+      </Button> */}
+      <Scanner></Scanner>
     </View>
   );
 }
