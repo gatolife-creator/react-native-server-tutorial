@@ -38,6 +38,13 @@ const DEFAULT_TABLE = {
     "test1": false,
     "test2": false,
     "test3": false,
+    "test4": false,
+    "test5": false,
+    "test6": false,
+    "test7": false,
+    "test8": false,
+    "test9": false,
+    "test10": false,
 }
 
 interface StampRallyData {
@@ -60,7 +67,9 @@ export class Database {
     }
 
     collectStamp(userID: string, projectHash: string) {
-        this.#data[userID][projectHash] = true;
+        if (this.#data[userID].hasOwnProperty(projectHash)) {
+            this.#data[userID][projectHash] = true;
+        }
     }
 
     getStampCount(userID: string) {

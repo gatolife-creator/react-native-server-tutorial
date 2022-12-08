@@ -7,22 +7,29 @@ const database = new Database(8);
 
 const port = process.env.PORT || 3000;
 
+// NOTE 下の二つがないと正常に動作しないので注意。
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(bodyParser.json())
-
-app.get("/", (req: any, res: any) => {
-    res.json({ id: Date.now() })
-});
+app.use(bodyParser.json());
 
 app.post("/", (req: any, res: any) => {
     const userID = req.body["userID"];
     database.resister(userID);
-    database.collectStamp(userID, "test1");
-    database.collectStamp(userID, "test2");
-    console.log(database.getStampCount(userID));
     res.sendStatus(200);
+});
+
+app.post("/stamp", (req: any, res: any) => {
+    const userID = req.body["userID"];
+    const projectHash = req.body["projectHash"];
+    database.collectStamp(userID, projectHash);
+    res.sendStatus(200);
+});
+
+app.post("/judge", (req: any, res: any) => {
+    const userID = req.body["userID"];
+    const result = database.isCompleted(userID);
+    res.send({ result });
 });
 
 app.listen(port, () => {
