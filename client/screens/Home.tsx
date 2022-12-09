@@ -13,9 +13,9 @@ import { Text, View } from "../components/Themed";
 import { Scanner } from "./Scanner";
 import { RootTabScreenProps } from "../types";
 
-export default function TabOneScreen({
+export default function Home({
   navigation,
-}: RootTabScreenProps<"TabOne">) {
+}: RootTabScreenProps<"Home">) {
   const [userID, setUserID] = useState("");
 
   useEffect(() => {
